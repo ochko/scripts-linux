@@ -1,0 +1,17 @@
+#!/bin/bash
+if [ $# -lt 2 ]
+then
+  echo "Usage: $0 <bin-name> <window-title>";
+  exit;
+fi
+
+BINNAME=$1
+WINNAME=$2
+
+running=`ps -eo fname | grep $BINNAME | wc -l`
+if [ $running -ne 0 ]
+then
+  wmctrl -R $WINNAME
+else
+  $BINNAME
+fi

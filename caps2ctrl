@@ -1,0 +1,8 @@
+#!/bin/bash
+# Хэрвээ CapsLock-ийг Control-оор солиогүй бол сольно.
+
+capskey=`xmodmap -pm | grep lock | grep Caps | wc -w`
+if [ $capskey -ne 0 ] 
+then
+  xmodmap $HOME/.Xmodmap
+fi
